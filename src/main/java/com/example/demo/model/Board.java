@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    @NotNull
+    private String title;
     private String content;
 }
