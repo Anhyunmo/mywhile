@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Board;
 import com.example.demo.repository.BoardRepository;
+import com.example.demo.validator.BoardValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +22,9 @@ public class BoardController {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private BoardValidator boardValidator;
 
     @GetMapping("/list")
     public String list(Model model, @PageableDefault(size = 1) Pageable pageable,
@@ -52,9 +56,11 @@ public class BoardController {
 
     @PostMapping("/form")
     public String greetingSubmit(@Valid Board board, BindingResult bindingResult){
+        boardValidator.validate(board, bindingResult);
         if(bindingResult.hasErrors()){
             return "board/form";
         }
+
         boardRepository.save(board);
         return "redirect:/board/list";
     }
