@@ -18,9 +18,9 @@
 
 <main class="form-signin">
 
-    <form class="form-signin" th:action="@{/account/login}" method="post">
+    <form class="form-signin" th:action="@{/account/register}" method="post">
         <img class="mb-4" src="https://mblogthumb-phinf.pstatic.net/MjAyMTAzMDNfMjY3/MDAxNjE0NzQzNDcyOTQy.Cm1xwuXYlOAN7Lo78iXjuDpY90jAsAir6WMR8W5Buuwg.hdhwLfAbUfyf37Lt_TbykbSFrYa_Qsm-5I8Gpvrh8_Ag.JPEG.lee_8433/8499B7EC-3010-446A-A3F0-B8614EE59F19.jpeg?type=w800" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 fw-normal">Welcome WilleRo</h1>
+        <h1 class="h3 mb-3 fw-normal">회원가입</h1>
         <div th:if="${param.error}" class="alert alert-dark" role="alert">
             Invalid username and password.
         </div>
@@ -41,7 +41,7 @@
 <!--                <input type="checkbox" value="remember-me"> Remember me-->
 <!--            </label>-->
 <!--        </div>-->
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">회원가입</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2021-</p>
     </form>
 </main>
