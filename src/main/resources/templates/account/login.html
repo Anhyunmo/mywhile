@@ -19,13 +19,15 @@
 <main class="form-signin">
 
     <form class="form-signin" th:action="@{/account/login}" method="post">
-        <img class="mb-4" src="https://mblogthumb-phinf.pstatic.net/MjAyMTAzMDNfMjY3/MDAxNjE0NzQzNDcyOTQy.Cm1xwuXYlOAN7Lo78iXjuDpY90jAsAir6WMR8W5Buuwg.hdhwLfAbUfyf37Lt_TbykbSFrYa_Qsm-5I8Gpvrh8_Ag.JPEG.lee_8433/8499B7EC-3010-446A-A3F0-B8614EE59F19.jpeg?type=w800" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 fw-normal">Welcome WilleRo</h1>
+        <a th:href="@{/}">
+            <img class="mb-4" src="https://mblogthumb-phinf.pstatic.net/MjAyMTAzMDNfMjY3/MDAxNjE0NzQzNDcyOTQy.Cm1xwuXYlOAN7Lo78iXjuDpY90jAsAir6WMR8W5Buuwg.hdhwLfAbUfyf37Lt_TbykbSFrYa_Qsm-5I8Gpvrh8_Ag.JPEG.lee_8433/8499B7EC-3010-446A-A3F0-B8614EE59F19.jpeg?type=w800" alt="" width="72" height="57">
+        </a>
+            <h1 class="h3 mb-3 fw-normal"><a th:href="@{/}">Welcome WilleRo</a></h1>
         <div th:if="${param.error}" class="alert alert-dark" role="alert">
             Invalid username and password.
         </div>
         <div th:if="${param.logout}" class="alert alert-primary" role="alert">
-            You have been logged out.
+            로그아웃 되었습니다.
         </div>
         <div class="form-floating">
             <input type="text" class="form-control" id="username" name="username" placeholder="WhileRo">
