@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Board;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@Slf4j
 public class UserApiController {
 
     @Autowired
@@ -22,7 +24,11 @@ public class UserApiController {
 
     @GetMapping("/users")
     List<User> all() {
-        return userRepository.findAll();
+        List<User> users = userRepository.findAll();
+        log.debug("getBoards().size() 호출전");
+        log.debug("getBoards().size() : {} ", users.get(0).getBoards().size());
+        log.debug("getBoards().size() 호출 후");
+        return users;
     }
 
     @PostMapping("/users")
@@ -40,8 +46,9 @@ public class UserApiController {
         return userRepository.findById(id).map(user -> {
 //            user.setTitle(newUser.getTitle());
 //            user.setContent(newUser.getContent());
-
-            user.setBoards(newUser.getBoards());
+            user.getBoards().clear();
+            user.getBoards().addAll(newUser.getBoards());
+           // user.setBoards(newUser.getBoards());
             for(Board board : user.getBoards()){
                 board.setUser(user);
             }
